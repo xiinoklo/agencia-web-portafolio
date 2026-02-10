@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ing. Benjamín | Desarrollo Web</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* CONFIGURACIÓN BASE */
+        h1, h2, h3, .font-heading { font-family: 'Space Grotesk', sans-serif; }
+        body { font-family: 'Inter', sans-serif; }
+
+        /* FONDO CYBER-GRID */
+        .cyber-grid-bg {
+            background-color: #0f172a;
+            background-image: 
+                linear-gradient(rgba(15, 23, 42, 0.93), rgba(15, 23, 42, 0.93)), 
+                linear-gradient(90deg, rgba(56, 189, 248, 0.08) 1px, transparent 1px), 
+                linear-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+        }
+
+        /* GLASSMORPHISM */
+        .glass-neon {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        .glass-neon:hover {
+            border-color: rgba(96, 165, 250, 0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+        }
+
+        /* TARJETAS DE COTIZACIÓN */
+        .plan-card { transition: all 0.3s ease; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .plan-radio:checked + div { border-color: #3b82f6; background: rgba(59, 130, 246, 0.1); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .plan-radio-premium:checked + div { border-color: #a855f7; box-shadow: 0 0 25px rgba(168, 85, 247, 0.25); background: rgba(168, 85, 247, 0.15); }
+
+        /* TEXTO GRADIENTE */
+        .text-gradient-cyber { background: linear-gradient(to right, #38bdf8, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* ANIMACIONES */
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 100; animation: pulse-green 3s infinite; }
+        @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        .typing-cursor::after { content: '_'; animation: blink 1s step-end infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
+</head>
+<body class="text-slate-300 cyber-grid-bg overflow-x-hidden">
+
+    <nav class="fixed w-full z-40 p-4 top-0">
+        <div class="glass-neon rounded-full max-w-6xl mx-auto px-6 py-3 flex justify-between items-center bg-slate-900/80">
+             
+             <div class="flex items-center gap-3 group cursor-pointer">
+                 <div class="w-8 h-8 rounded bg-blue-600 flex items-center justify-center text-white shadow-[0_0_15px_rgba(37,99,235,0.5)]">
+                    <i class="fas fa-terminal text-sm"></i>
+                 </div>
+                 <h1 class="text-xl font-bold tracking-wider text-white font-heading">
+                    ING<span class="text-blue-400">.BENJAMIN</span>
+                 </h1>
+             </div>
+
+             <a href="#cotizar" class="text-sm font-bold text-white bg-blue-600 hover:bg-blue-500 px-5 py-2 rounded-full transition shadow-lg shadow-blue-500/30">Cotizar Proyecto</a>
+        </div>
+    </nav>
+
+    <header class="min-h-screen flex items-center relative overflow-hidden pt-24 pb-10">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/20 rounded-full filter blur-[120px] -z-10 animate-pulse"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-600/10 rounded-full filter blur-[120px] -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold mb-6 tracking-widest uppercase">
+                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span> Agenda Abierta 2026
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight font-heading">
+                    Código <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Pro.</span><br>
+                    Precio <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Estudiante.</span>
+                </h1>
+                <p class="text-slate-400 text-lg mb-8 leading-relaxed max-w-lg">
+                    Obtén un sitio web de alta gama desarrollado en <strong>Python/Flask</strong> por una fracción del costo de agencia. Ayúdame a construir mi portafolio, yo construyo tu negocio.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#cotizar" class="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition shadow-[0_0_20px_rgba(37,99,235,0.4)] text-center">Cotizar Ahora</a>
+                    <a href="#guia" class="px-8 py-4 glass-neon text-slate-300 font-bold rounded-xl hover:bg-white/5 transition text-center">¿Qué necesito?</a>
+                </div>
+            </div>
+            <div class="relative hidden lg:block" data-aos="fade-left">
+                <div class="glass-neon rounded-xl overflow-hidden border border-slate-700/50 shadow-2xl transform rotate-1 hover:rotate-0 transition duration-500">
+                    <div class="bg-slate-900/90 px-4 py-3 flex items-center gap-2 border-b border-slate-700/50">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span class="ml-4 text-xs text-slate-500 font-mono">ing_benjamin_portfolio.py</span>
+                    </div>
+                    <div class="bg-slate-950/80 p-6 font-mono text-sm leading-relaxed text-slate-300">
+                        <p><span class="text-purple-400">class</span> <span class="text-yellow-300">TuSitioWeb</span>:</p>
+                        <p class="pl-4"><span class="text-blue-400">def</span> <span class="text-yellow-300">__init__</span>(self):</p>
+                        <p class="pl-8">self.tecnologia = <span class="text-green-400">"Python + Flask"</span></p>
+                        <p class="pl-8">self.velocidad = <span class="text-green-400">"100/100"</span></p>
+                        <p class="pl-8">self.precio = <span class="text-green-400">"Launch Offer 📉"</span></p>
+                        <p class="pl-4"><span class="text-blue-400">def</span> <span class="text-yellow-300">crear_valor</span>(self):</p>
+                        <p class="pl-8"><span class="text-purple-400">return</span> <span class="text-green-400">"Cliente Satisfecho 🚀"</span></p>
+                        <p class="typing-cursor text-blue-400">_</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-10 bg-slate-900/50 border-y border-white/5">
+        <div class="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div><h4 class="text-3xl font-bold text-white mb-1">Python</h4><p class="text-xs text-slate-500 uppercase font-bold">Backend</p></div>
+            <div><h4 class="text-3xl font-bold text-white mb-1">+Rápido</h4><p class="text-xs text-slate-500 uppercase font-bold">Optimización</p></div>
+            <div><h4 class="text-3xl font-bold text-white mb-1">100%</h4><p class="text-xs text-slate-500 uppercase font-bold">Propiedad Tuya</p></div>
+            <div><h4 class="text-3xl font-bold text-white mb-1">4to Año</h4><p class="text-xs text-slate-500 uppercase font-bold">Ingeniería</p></div>
+        </div>
+    </section>
+
+    <section id="proceso" class="py-20 bg-slate-800/30 relative">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-white text-center mb-12">¿Cómo trabajamos?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                <div class="hidden md:block absolute top-10 left-0 w-full h-1 bg-gradient-to-r from-blue-900 via-blue-500 to-blue-900 -z-10 opacity-30"></div>
+                <div class="text-center group" data-aos="zoom-in"><div class="w-20 h-20 mx-auto glass-neon rounded-full flex items-center justify-center mb-6 text-2xl font-bold text-white border-2 border-blue-500 bg-slate-900 z-10">1</div><h3 class="text-xl font-bold text-white mb-2">Cotización</h3><p class="text-sm text-slate-400">Eliges lo que necesitas y obtienes precio estimado.</p></div>
+                <div class="text-center group" data-aos="zoom-in" data-aos-delay="100"><div class="w-20 h-20 mx-auto glass-neon rounded-full flex items-center justify-center mb-6 text-2xl font-bold text-white border-2 border-blue-500 bg-slate-900 z-10">2</div><h3 class="text-xl font-bold text-white mb-2">Desarrollo</h3><p class="text-sm text-slate-400">Programo tu sitio y te muestro avances.</p></div>
+                <div class="text-center group" data-aos="zoom-in" data-aos-delay="200"><div class="w-20 h-20 mx-auto glass-neon rounded-full flex items-center justify-center mb-6 text-2xl font-bold text-white border-2 border-green-500 bg-slate-900 z-10">3</div><h3 class="text-xl font-bold text-white mb-2">Entrega</h3><p class="text-sm text-slate-400">Te entrego las claves, es 100% tuyo.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="guia" class="py-24 px-4 max-w-6xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">¿Qué tipo de sitio necesito?</h2>
+            <p class="text-slate-400">Una guía rápida para elegir la opción correcta en el cotizador.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="group relative bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl hover:border-blue-500/50 transition duration-300" data-aos="fade-up">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition"><i class="fas fa-rocket text-6xl text-blue-500"></i></div>
+                <h3 class="text-2xl font-bold text-white mb-2 flex items-center gap-3"><i class="fas fa-bullhorn text-blue-500"></i> Landing Page</h3>
+                <p class="text-slate-400 text-sm mb-4 leading-relaxed">Es una página web de una sola sección larga. Está diseñada con un solo objetivo: vender un producto específico o capturar datos de clientes.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-300 text-xs rounded">Ideal para Ventas</span>
+                </div>
+            </div>
+
+            <div class="group relative bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl hover:border-purple-500/50 transition duration-300" data-aos="fade-up" data-aos-delay="100">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition"><i class="fas fa-building text-6xl text-purple-500"></i></div>
+                <h3 class="text-2xl font-bold text-white mb-2 flex items-center gap-3"><i class="fas fa-briefcase text-purple-500"></i> Sitio Corporativo</h3>
+                <p class="text-slate-400 text-sm mb-4 leading-relaxed">Tu oficina digital. Tiene varias páginas (Inicio, Nosotros, Servicios, Contacto). Sirve para dar prestigio y explicar a fondo qué hace tu empresa.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-2 py-1 bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs rounded">Pymes y Consultoras</span>
+                </div>
+            </div>
+
+            <div class="group relative bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl hover:border-green-500/50 transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition"><i class="fas fa-shopping-cart text-6xl text-green-500"></i></div>
+                <h3 class="text-2xl font-bold text-white mb-2 flex items-center gap-3"><i class="fas fa-store text-green-500"></i> E-commerce</h3>
+                <p class="text-slate-400 text-sm mb-4 leading-relaxed">Tu tienda abierta 24/7. Incluye catálogo de productos, carrito de compras y botones para pedir por WhatsApp o pagar en línea.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-2 py-1 bg-green-500/10 border border-green-500/20 text-green-300 text-xs rounded">Venta de Productos</span>
+                </div>
+            </div>
+
+            <div class="group relative bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl hover:border-pink-500/50 transition duration-300" data-aos="fade-up" data-aos-delay="300">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition"><i class="fas fa-server text-6xl text-pink-500"></i></div>
+                <h3 class="text-2xl font-bold text-white mb-2 flex items-center gap-3"><i class="fas fa-microchip text-pink-500"></i> Web App / Sistema</h3>
+                <p class="text-slate-400 text-sm mb-4 leading-relaxed">Software a medida. ¿Necesitas que tus usuarios inicien sesión, guarden datos, generen reportes o gestionen inventario? Esto es para ti.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-2 py-1 bg-pink-500/10 border border-pink-500/20 text-pink-300 text-xs rounded">SaaS y Herramientas</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cotizar" class="py-20 px-4">
+        <div class="max-w-5xl mx-auto glass-neon rounded-3xl p-6 md:p-12 relative border-t border-blue-500/30" data-aos="zoom-in-up">
+            <div class="text-center mb-10">
+                <span class="text-blue-400 text-xs font-bold uppercase tracking-widest">Calculadora de Inversión</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-white mt-2 font-heading">Arma tu Proyecto</h2>
+                <p class="text-slate-400 mt-2 text-sm">Ahora que sabes qué necesitas, calcula tu precio.</p>
+            </div>
+            
+            <form id="cotizarForm">
+                <div class="mb-12">
+                    <label class="block text-slate-300 mb-4 text-sm font-bold uppercase tracking-wider">1. ¿Qué vamos a construir?</label>
+                    <select id="tipo" class="w-full bg-slate-900/80 border border-slate-700 rounded-xl p-4 text-white focus:border-blue-500 outline-none transition text-lg">
+                        <option value="landing">Landing Page (Página única)</option>
+                        <option value="corporativa">Sitio Corporativo (Multi-páginas)</option>
+                        <option value="ecommerce">Tienda Online Básica</option>
+                        <option value="webapp">Prototipo Web App</option>
+                    </select>
+                </div>
+
+                <div class="mb-12">
+                    <label class="block text-slate-300 mb-4 text-sm font-bold uppercase tracking-wider">2. Elige tu Plan de Diseño</label>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <label class="relative group h-full">
+                            <input type="radio" name="diseno" value="estandar" checked class="peer plan-radio absolute opacity-0">
+                            <div class="plan-card bg-slate-900/60 p-6 rounded-2xl border border-slate-700 h-full flex flex-col">
+                                <div class="flex justify-between items-center mb-4"><h3 class="text-xl font-bold text-white">Estándar</h3><i class="fas fa-check-circle text-slate-500 text-2xl peer-checked:text-blue-500"></i></div>
+                                <p class="text-sm text-slate-400 mb-6 flex-grow">Perfecto si buscas algo funcional, rápido y económico para empezar.</p>
+                                <ul class="text-sm space-y-3 text-slate-300 border-t border-white/5 pt-4">
+                                    <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-3 text-xs"></i> Diseño limpio</li>
+                                    <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-3 text-xs"></i> 1 Ronda de revisiones</li>
+                                    <li class="flex items-center"><i class="fas fa-bolt text-yellow-500 mr-3 text-xs"></i> <strong>Entrega Rápida</strong></li>
+                                </ul>
+                            </div>
+                        </label>
+                        <label class="relative group h-full">
+                            <input type="radio" name="diseno" value="premium" class="peer plan-radio-premium absolute opacity-0">
+                            <div class="plan-card bg-slate-900/60 p-6 rounded-2xl border border-slate-700 h-full relative overflow-hidden flex flex-col">
+                                <div class="absolute top-0 right-0 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wider">Recomendado</div>
+                                <div class="flex justify-between items-center mb-4"><h3 class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Premium ✨</h3><i class="fas fa-check-circle text-slate-500 text-2xl peer-checked:text-purple-400"></i></div>
+                                <p class="text-sm text-slate-400 mb-6 flex-grow">Para destacar. Diseño a medida y animaciones.</p>
+                                <ul class="text-sm space-y-3 text-slate-300 border-t border-white/5 pt-4">
+                                    <li class="flex items-center"><i class="fas fa-star text-purple-400 mr-3 text-xs"></i> <strong>Diseño 100% a medida</strong></li>
+                                    <li class="flex items-center"><i class="fas fa-star text-purple-400 mr-3 text-xs"></i> Animaciones (Scroll)</li>
+                                    <li class="flex items-center"><i class="fas fa-star text-purple-400 mr-3 text-xs"></i> <strong>3 Rondas de revisiones</strong></li>
+                                </ul>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="mb-10">
+                    <label class="block text-slate-300 mb-4 text-sm font-bold uppercase tracking-wider">3. Complementos</label>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <label class="flex items-center p-4 bg-slate-900/80 rounded-xl cursor-pointer hover:bg-slate-800 transition border border-transparent hover:border-blue-500/30"><div class="w-5 h-5 rounded bg-slate-700 flex items-center justify-center mr-3"><input type="checkbox" value="seo" class="opacity-0 absolute checkbox-extra peer"><i class="fas fa-check text-blue-400 opacity-0 peer-checked:opacity-100 transition text-xs"></i></div><span class="text-slate-300 text-sm">SEO Básico</span></label>
+                        <label class="flex items-center p-4 bg-slate-900/80 rounded-xl cursor-pointer hover:bg-slate-800 transition border border-transparent hover:border-blue-500/30"><div class="w-5 h-5 rounded bg-slate-700 flex items-center justify-center mr-3"><input type="checkbox" value="hosting" class="opacity-0 absolute checkbox-extra peer"><i class="fas fa-check text-blue-400 opacity-0 peer-checked:opacity-100 transition text-xs"></i></div><span class="text-slate-300 text-sm">Hosting/Dominio</span></label>
+                        <label class="flex items-center p-4 bg-slate-900/80 rounded-xl cursor-pointer hover:bg-slate-800 transition border border-transparent hover:border-blue-500/30"><div class="w-5 h-5 rounded bg-slate-700 flex items-center justify-center mr-3"><input type="checkbox" value="admin" class="opacity-0 absolute checkbox-extra peer"><i class="fas fa-check text-blue-400 opacity-0 peer-checked:opacity-100 transition text-xs"></i></div><span class="text-slate-300 text-sm">Panel Admin</span></label>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="button" onclick="calcularPrecio()" class="w-full md:w-auto px-12 py-5 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold rounded-xl transition transform hover:scale-105 shadow-lg shadow-purple-500/30 text-lg">Ver Precio Final <i class="fas fa-arrow-right ml-2"></i></button>
+                </div>
+            </form>
+
+            <div id="resultado" class="hidden mt-8 bg-slate-950/90 p-8 rounded-xl border border-green-500/50 text-center shadow-[0_0_30px_rgba(34,197,94,0.1)] animate-fade-in-up">
+                <p class="text-slate-400 text-xs uppercase font-bold mb-2 tracking-widest">Inversión Estimada (CLP)</p>
+                <div class="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-500 mb-2 font-heading" id="precioFinal">$0</div>
+                <p class="text-slate-400 text-sm mb-6" id="mensajeFinal"></p>
+                <a href="https://wa.me/56900000000" target="_blank" class="inline-flex items-center bg-green-600 hover:bg-green-500 text-white px-8 py-3 rounded-xl font-bold transition shadow-lg shadow-green-600/20"><i class="fab fa-whatsapp text-xl mr-2"></i> Congelar Precio en WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 max-w-3xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-white text-center mb-10">Dudas Frecuentes</h2>
+        <div class="space-y-4">
+            <details class="glass-neon rounded-xl group p-4 cursor-pointer">
+                <summary class="font-bold text-white flex justify-between items-center list-none">¿Cuál es la diferencia real entre Estándar y Premium? <span class="text-blue-400 group-open:rotate-180 transition"><i class="fas fa-chevron-down"></i></span></summary>
+                <p class="text-slate-400 text-sm mt-4 leading-relaxed pl-4 border-l-2 border-blue-500/30">La versión Estándar usa estructuras más simples pero efectivas. La Premium incluye diseño a medida, animaciones, más revisiones y un acabado visual superior.</p>
+            </details>
+            <details class="glass-neon rounded-xl group p-4 cursor-pointer">
+                <summary class="font-bold text-white flex justify-between items-center list-none">¿Por qué tan barato? <span class="text-blue-400 group-open:rotate-180 transition"><i class="fas fa-chevron-down"></i></span></summary>
+                <p class="text-slate-400 text-sm mt-4 leading-relaxed pl-4 border-l-2 border-blue-500/30">Soy estudiante de 4to año de Ingeniería y mi objetivo hoy es ampliar mi portafolio. Obtienes calidad profesional a precio de estudiante.</p>
+            </details>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center text-slate-600 text-sm border-t border-white/5 bg-slate-950">
+        <p>© 2026 Ing. Benjamín. Desarrollado con Python & Pasión.</p>
+    </footer>
+    <a href="https://wa.me/56900000000" class="whatsapp-float bg-green-500 w-14 h-14 rounded-full flex items-center justify-center text-white text-3xl shadow-lg hover:bg-green-400 transition transform hover:scale-110"><i class="fab fa-whatsapp"></i></a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        async function calcularPrecio() {
+            const btn = document.querySelector('button[type="button"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Calculando...';
+            btn.disabled = true;
+            const tipo = document.getElementById('tipo').value;
+            const diseno = document.querySelector('input[name="diseno"]:checked').value;
+            const extras = Array.from(document.querySelectorAll('.checkbox-extra:checked')).map(cb => cb.value);
+            await new Promise(r => setTimeout(r, 600));
+            const response = await fetch('/cotizar', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ tipo, diseno, extras }) });
+            const data = await response.json();
+            document.getElementById('precioFinal').innerText = data.precio;
+            document.getElementById('mensajeFinal').innerText = data.mensaje;
+            const resultado = document.getElementById('resultado');
+            resultado.classList.remove('hidden');
+            resultado.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+    </script>
+</body>
+</html>
